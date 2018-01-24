@@ -46,6 +46,7 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
                 Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());
                 declaredField.setAccessible(true);
                 //获取filed type
+                //String fullTypeName = declaredField.getType().getName();//这是全名，如：java.lang.String
                 String fieldType = declaredField.getType().getSimpleName();
                 Object val = parseValue(value, fieldType);
                 declaredField.set(bean, val);
@@ -53,6 +54,12 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
         }
     }
 
+    /**
+     * 根据fieldType进行类型转换，目前只是做一个简单的转换，未考虑到其它复杂情况，以后扩展
+     * @param value 属性值
+     * @param fieldType 属性值类型
+     * @return 属性值
+     */
     private Object parseValue(Object value, String fieldType) {
         Object result = "";
         switch (fieldType) {
