@@ -1,0 +1,9 @@
+<beans>
+    <bean id="demo" class="com.qing.entity.Demo">
+        <property name="id" value="1"></property>
+        <property name="name" value="qing"></property>
+        <property name="age" value="25"></property>
+        <property name="address" value="gaungzhou"></property>
+        <property name="birth" value="2017-01-24"></property>
+    </bean>
+</beans>
