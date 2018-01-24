@@ -22,11 +22,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class AbstractBeanFactory implements BeanFactory {
 
-    private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>();
+    private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
-    private final List<String> beanDefinitionNames = new ArrayList<String>();
+    private final List<String> beanDefinitionNames = new ArrayList<>();
 
-    private List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+    private List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     @Override
     public Object getBean(String name) throws Exception {
@@ -87,7 +87,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
     }
 
     public List getBeansForType(Class type) throws Exception {
-        List beans = new ArrayList<Object>();
+        List beans = new ArrayList<>();
         for (String beanDefinitionName : beanDefinitionNames) {
             if (type.isAssignableFrom(beanDefinitionMap.get(beanDefinitionName).getBeanClass())) {
                 beans.add(getBean(beanDefinitionName));

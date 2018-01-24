@@ -56,7 +56,6 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         DocumentBuilder documentBuilder = factory.newDocumentBuilder();
         //获取输入流文本
         Document document = documentBuilder.parse(inputStream);
-        System.out.println(document);
         // 解析bean
         registerBeanDefinitions(document);
         //关闭输入流，以节省资源
@@ -70,7 +69,6 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
     private void registerBeanDefinitions(Document document) {
         //获取根节点
         Element root = document.getDocumentElement();
-        System.out.println(root);
         //解析每个bean以及属性
         parseBeanDefinitions(root);
     }
@@ -82,7 +80,6 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
     private void parseBeanDefinitions(Element root) {
         //获取子节点下的属性
         NodeList nodeList = root.getChildNodes();
-        System.out.println(nodeList);
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
             if (node instanceof Element) {
@@ -98,11 +95,9 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
      * @param ele ele
      */
     private void processBeanDefinition(Element ele) {
-        System.out.println(ele);
         //获取属性值
         String name = ele.getAttribute(ID_NODE);
         String className = ele.getAttribute(CLASS_NODE);
-        System.out.println(name+", "+className);
         //赋值定义bean实体类的值
         BeanDefinition beanDefinition = new BeanDefinition();
         processProperty(ele, beanDefinition);
@@ -117,7 +112,6 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
      * @param beanDefinition bean
      */
     private void processProperty(Element ele, BeanDefinition beanDefinition) {
-        System.out.println(ele+", "+beanDefinition);
         //获取每个bean里面的property值
         NodeList propertyNode = ele.getElementsByTagName(PROPERTY_NODE);
         for (int i = 0; i < propertyNode.getLength(); i++) {

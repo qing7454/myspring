@@ -6,4 +6,7 @@
         <property name="address" value="gaungzhou"></property>
         <property name="birth" value="2017-01-24"></property>
     </bean>
+    <bean id="demoRepository" class="com.qing.repository.DemoRepository">
+
+    </bean>
 </beans>
